@@ -64,6 +64,16 @@ $(document).ready(function(){
 
 	});
 
+	$(".read a").click(function(event){
+
+	var target = event.currentTarget.className;
+		target = target.substr(10,target.length);
+
+		$(".create_options").hide();
+
+		$(".read_panel_" + target).hide().fadeIn();
+	});
+
 	$(".back_button").click(function(event){
 
 		$(".panel").hide().fadeOut(function(){
