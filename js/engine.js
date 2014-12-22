@@ -1,18 +1,24 @@
-// magic fuckers
+// This is where the magic happens, fuckers !
+// Ben @ YUDU 2015
 
-$(document).ready(function(){
+$(document).ready(function()
+{
+var createReaderFormData;
+var rootDir = "http://localhost/ops-api/"
 
 	// check if keys have already been added
 	checkLogIn();
 
 	// the controller for the main panels show/hide
-	$(".one-third a").click(function(event){
+	$(".one-third a").click(function(event)
+	{
 		// get the link target
 		var target = event.target.className;
 			target = target.substr(0,target.length-5);
 
 			// hide all the others
-			$(".two-thirds").each(function(event){
+			$(".two-thirds").each(function(event)
+			{
 				$(".message").hide();
 				$(this).hide();
 			});
@@ -22,7 +28,8 @@ $(document).ready(function(){
 	});
 
 	// the controller to get admin keys
-	$("#submit_admin").click(function(){
+	$("#submit_admin").click(function()
+	{
 	// may be blank, may be not
 		var key = $("#key").val();
 		var shared = $("#shared").val();
@@ -41,7 +48,8 @@ $(document).ready(function(){
 	});
 
 	// controller to show the 'create' options
-	$(".create a").click(function(event){
+	$(".create a").click(function(event)
+	{
 		// get the link target
 		var target = event.currentTarget.className;
 			target = target.substr(12,target.length);
@@ -49,8 +57,9 @@ $(document).ready(function(){
 			$(".create_panel_" + target).hide().fadeIn();
 	});
 
-	// controller for the read options
-	$(".read a").click(function(event){
+	// controller for the 'read' options
+	$(".read a").click(function(event)
+	{
 		// get the link target
 		var target = event.currentTarget.className;
 			target = target.substr(10,target.length);
@@ -58,27 +67,95 @@ $(document).ready(function(){
 			$(".read_panel_" + target).hide().fadeIn();
 	});
 
+	//
 	// TODO
+	//
 
 	// - add update viewcontroller
 	// - add delete view controller
 
 	// back button controller
-	$(".back_button").click(function(event){
-		$(".panel").hide().fadeOut(function(){
+	$(".back_button").click(function(event)
+	{
+		$(".panel").hide().fadeOut(function()
+		{
 			$(".create_options").fadeIn();
 		});
 	});
 
-	// 
+	//
+	// event listeners and functions to parse form data
+	//
+
+	// create a new reader
+	$("#submit_create_reader").click(function(event)
+	{
+		var emptyFields = 0;
+		var numFields = 0;
+
+		$(".create_panel_reader form input[type='text']").each(function(event)
+		{
+			numFields++;
+		});
+
+		$(".create_panel_reader form input[type='text']").each(function(event)
+		{
+			var tempValue = $(this).val();
+				// fire a warning message if empty
+				if (!tempValue)
+				{
+					emptyFields++;
+					$(this).addClass("input_empty");
+				}
+				else
+				{
+					$(this).removeClass("input_empty");
+				}
+		});
+
+		if (emptyFields > 0)
+		{
+			$(".prompts").html("<div class='warning'>These cannot be empty - There are " +emptyFields + " empty fields X</div>");
+			attachListeners();
+		}
+		else
+		{
+			createReaderFormData = $(".create_panel_reader form").serialize();
+
+			$(".create_panel_reader form").hide(function(){
+
+				$(".create_panel_reader .response").html("<h4>Working...</h4>");
+
+				$(".create_panel_reader .response").hide().fadeIn();
+
+				$.ajax({
+					url: rootDir + "php/module_create.php",
+					type: "POST",
+					data: {
+						type		: "create_user", 
+						formString	: createReaderFormData,
+					},
+					success: function(response)
+					{
+						console.log(response);
+					}
+				});
+			});
+		}
+
+	});
+
 
 });
 
 
 // attaches an event listener to any newly created dom element
-function attachListeners(){
-	$(".warning").click(function(){
-		$(this).fadeOut(function(){
+function attachListeners()
+{
+	$(".warning").click(function()
+	{
+		$(this).fadeOut(function()
+		{
 			$(this).hide();
 		});
 	});
