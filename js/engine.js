@@ -1,13 +1,13 @@
 // This is where the magic happens, fuckers !
 // Ben @ YUDU 2015
 
+var rootDir = "http://localhost/ops-api/"
+var adminKey, adminShared, createReaderFormData;
+// check if keys have already been added
+checkLogIn();
+
 $(document).ready(function()
 {
-var createReaderFormData;
-var rootDir = "http://localhost/ops-api/"
-
-	// check if keys have already been added
-	checkLogIn();
 
 	// the controller for the main panels show/hide
 	$(".one-third a").click(function(event)
@@ -133,6 +133,8 @@ var rootDir = "http://localhost/ops-api/"
 					type: "POST",
 					data: {
 						type		: "create_user", 
+						key 		: adminKey,
+						secret 		: adminShared, 
 						formString	: createReaderFormData,
 					},
 					success: function(response)
@@ -164,8 +166,8 @@ function attachListeners()
 // check if any details are already in localstorage
 function checkLogIn()
 {
-	var adminKey = localStorage.getItem("adminKey");
-	var adminShared = localStorage.getItem("adminShared");
+	adminKey = localStorage.getItem("adminKey");
+	adminShared = localStorage.getItem("adminShared");
 		if (!adminKey || !adminShared)
 		{
 			$("#signed_out").fadeIn();
