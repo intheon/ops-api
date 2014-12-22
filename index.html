@@ -43,6 +43,26 @@
         <h5><a href="#" class="delete_link">DELETE</a></h5>
       </div>
 
+      <div class="seven columns message" style="margin-top: 5%" style="display:block">
+        <h5>Welcome</h5>
+
+        <div id="signed_out">
+          <p>You're not signed in. | Please enter your keys before you can proceed.</p>
+          <form name="admin_credentials" id="admin_credentials">
+            <input type="text" placeholder="api key" name="key" id="key">
+            <input type="text" placeholder="shared secret" name="shared" id="shared">
+            <input type="button" value="submit" id="submit_admin">
+          </form>
+        </div>
+
+        <div id="signed_in">
+          <p>You're are signed in. | Your keys are as follows</p>
+          <h5 id="api_output">API Key: </h5>
+          <h5 id="shared_output">Shared Secret: </h5>
+        </div>
+
+      </div>
+
       <div class="two-thirds column create" style="margin-top: 5%">
         <h5>CREATE</h5>
         <p>Create a brand new one one of the following...</p>
