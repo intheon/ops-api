@@ -2,88 +2,80 @@
 
 $(document).ready(function(){
 
+	// check if keys have already been added
+	checkLogIn();
+
 	// the controller for the main panels show/hide
-
 	$(".one-third a").click(function(event){
-
-			// get the link target
-
+		// get the link target
 		var target = event.target.className;
 			target = target.substr(0,target.length-5);
 
 			// hide all the others
- 
-		$(".two-thirds").each(function(event){
-			$(".message").hide();
-			$(this).hide();
-		});
+			$(".two-thirds").each(function(event){
+				$(".message").hide();
+				$(this).hide();
+			});
 
-			// show the particular one
-
-		$("." + target).hide().fadeIn();
-
+				// show the particular one
+				$("." + target).hide().fadeIn();
 	});
-
-	checkLogIn();
 
 	// the controller to get admin keys
-
 	$("#submit_admin").click(function(){
-
-			// may be blank, may be not
-
+	// may be blank, may be not
 		var key = $("#key").val();
 		var shared = $("#shared").val();
-
 			// check if they are
-
-		if (!key || !shared)
-		{
-			$(".message").append("<div class='warning'>These cannot be empty X</div>")
-			attachListeners();
-		}
-
-		else
-		{
-			localStorage.setItem("adminKey",key);
-			localStorage.setItem("adminShared",shared);	
-			checkLogIn();
-		}
+			if (!key || !shared)
+			{
+				$(".message").append("<div class='warning'>These cannot be empty X</div>")
+				attachListeners();
+			}
+			else
+			{
+				localStorage.setItem("adminKey",key);
+				localStorage.setItem("adminShared",shared);	
+				checkLogIn();
+			}
 	});
 
+	// controller to show the 'create' options
 	$(".create a").click(function(event){
-
-			// get the link target
-
+		// get the link target
 		var target = event.currentTarget.className;
 			target = target.substr(12,target.length);
-
-		$(".create_options").hide();
-
-		$(".create_panel_" + target).hide().fadeIn();
-
+			$(".create_options").hide();
+			$(".create_panel_" + target).hide().fadeIn();
 	});
 
+	// controller for the read options
 	$(".read a").click(function(event){
-
-	var target = event.currentTarget.className;
-		target = target.substr(10,target.length);
-
-		$(".create_options").hide();
-
-		$(".read_panel_" + target).hide().fadeIn();
+		// get the link target
+		var target = event.currentTarget.className;
+			target = target.substr(10,target.length);
+			$(".create_options").hide();
+			$(".read_panel_" + target).hide().fadeIn();
 	});
 
-	$(".back_button").click(function(event){
+	// TODO
 
+	// - add update viewcontroller
+	// - add delete view controller
+
+	// back button controller
+	$(".back_button").click(function(event){
 		$(".panel").hide().fadeOut(function(){
 			$(".create_options").fadeIn();
 		});
-
 	});
+
+	// 
 
 });
 
+
+// attaches an event listener to any newly created dom element
 function attachListeners(){
 	$(".warning").click(function(){
 		$(this).fadeOut(function(){
@@ -92,23 +84,20 @@ function attachListeners(){
 	});
 };
 
-
+// check if any details are already in localstorage
 function checkLogIn()
 {
 	var adminKey = localStorage.getItem("adminKey");
 	var adminShared = localStorage.getItem("adminShared");
-
-	if (!adminKey || !adminShared)
-	{
-		$("#signed_out").fadeIn();
-	}
-	else 
-	{
-		$("#signed_out").fadeOut();
-		$("#signed_in").fadeIn();
-
-		$("#api_output").append(adminKey);
-		$("#shared_output").append(adminShared);
-	}
-
+		if (!adminKey || !adminShared)
+		{
+			$("#signed_out").fadeIn();
+		}
+		else 
+		{
+			$("#signed_out").fadeOut();
+			$("#signed_in").fadeIn();
+			$("#api_output").append(adminKey);
+			$("#shared_output").append(adminShared);
+		}
 }
