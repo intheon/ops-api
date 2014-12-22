@@ -29,20 +29,47 @@ $(document).ready(function(){
 	// the controller to get admin keys
 
 	$("#submit_admin").click(function(){
+
+			// may be blank, may be not
+
 		var key = $("#key").val();
 		var shared = $("#shared").val();
+
+			// check if they are
 
 		if (!key || !shared)
 		{
 			$(".message").append("<div class='warning'>These cannot be empty X</div>")
 			attachListeners();
 		}
+
 		else
 		{
 			localStorage.setItem("adminKey",key);
 			localStorage.setItem("adminShared",shared);	
 			checkLogIn();
 		}
+	});
+
+	$(".create a").click(function(event){
+
+			// get the link target
+
+		var target = event.currentTarget.className;
+			target = target.substr(12,target.length);
+
+		$(".create_options").hide();
+
+		$(".create_panel_" + target).hide().fadeIn();
+
+	});
+
+	$(".back_button").click(function(event){
+
+		$(".panel").hide().fadeOut(function(){
+			$(".create_options").fadeIn();
+		});
+
 	});
 
 });
