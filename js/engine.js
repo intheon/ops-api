@@ -33,8 +33,9 @@ $(document).ready(function()
 	// may be blank, may be not
 		var key = $("#key").val();
 		var shared = $("#shared").val();
+		var name = $("#name").val();
 			// check if they are
-			if (!key || !shared)
+			if (!key || !shared || !name)
 			{
 				$(".message").append("<div class='warning'>These cannot be empty X</div>")
 				attachListeners();
@@ -42,7 +43,8 @@ $(document).ready(function()
 			else
 			{
 				localStorage.setItem("adminKey",key);
-				localStorage.setItem("adminShared",shared);	
+				localStorage.setItem("adminShared",shared);
+				localStorage.setItem("adminName",name);	
 				checkLogIn();
 			}
 	});
@@ -139,6 +141,7 @@ $(document).ready(function()
 					},
 					success: function(response)
 					{
+						$(".create_panel_reader .response").html(response);
 						console.log(response);
 					}
 				});
@@ -168,15 +171,25 @@ function checkLogIn()
 {
 	adminKey = localStorage.getItem("adminKey");
 	adminShared = localStorage.getItem("adminShared");
+	adminName = localStorage.getItem("adminName");
 		if (!adminKey || !adminShared)
 		{
 			$("#signed_out").fadeIn();
 		}
 		else 
 		{
-			$("#signed_out").fadeOut();
-			$("#signed_in").fadeIn();
-			$("#api_output").append(adminKey);
-			$("#shared_output").append(adminShared);
+			$("#signed_out").fadeOut(function(){
+				$(this).hide(function(){
+					$("#signed_in").fadeIn(function(){
+							$("#api_output").append(adminKey);
+							$("#shared_output").append(adminShared);
+							$("#name_output").append(adminName);
+						$(".toolbar").fadeIn("slow");
+					});
+
+				})
+			});
+
+
 		}
 }

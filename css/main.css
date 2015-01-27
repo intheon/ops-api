@@ -17,3 +17,18 @@
 {
 	color:red;
 }
+.toolbar
+{
+	background-color: black;
+	color:white;
+	width:100%;
+	padding-top:0.5%;
+	padding-bottom:0.5%;
+	text-align: right;
+	bottom:0;
+	position:fixed;
+}
+.toolbar span
+{
+	padding: 0.5%;
+}

@@ -32,265 +32,275 @@
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
   <div class="container">
-    <div class="row">
 
-      <div class="one-third column" style="margin-top: 5%">
-        <h4>YUDU REST API</h4>
-        <h5><a href="#" class="create_link">CREATE</a></h5>
-        <h5><a href="#" class="read_link">READ</a></h5>
-        <h5><a href="#" class="update_link">UPDATE</a></h5>
-        <h5><a href="#" class="delete_link">DELETE</a></h5>
-      </div>
+	<div class="row">
 
-      <div class="seven columns message" style="margin-top: 5%" style="display:block">
-        <h5>Welcome</h5>
+	  <div class="one-third column" style="margin-top: 5%">
+		<h4>YUDU REST API</h4>
+		<h5><a href="#" class="create_link">CREATE</a></h5>
+		<h5><a href="#" class="read_link">READ</a></h5>
+		<h5><a href="#" class="update_link">UPDATE</a></h5>
+		<h5><a href="#" class="delete_link">DELETE</a></h5>
+	  </div>
 
-        <div id="signed_out">
-          <p>You're not signed in. | Please enter your keys before you can proceed.</p>
-          <form name="admin_credentials" id="admin_credentials">
-            <input type="text" placeholder="api key" name="key" id="key">
-            <input type="text" placeholder="shared secret" name="shared" id="shared">
-            <input type="button" value="submit" id="submit_admin">
-          </form>
-        </div>
+	  <div class="seven columns message" style="margin-top: 5%" style="display:block">
+		<h5>Welcome</h5>
 
-        <div id="signed_in">
-          <p>You're are signed in. | Your keys are as follows</p>
-          <h5 id="api_output">API Key: </h5>
-          <h5 id="shared_output">Shared Secret: </h5>
-        </div>
+		<div id="signed_out">
+		  <p>You're not signed in. | Please enter your keys before you can proceed.</p>
+		  <form name="admin_credentials" id="admin_credentials">
+			<input type="text" placeholder="your first name" name="key" id="name">
+			<input type="text" placeholder="api key" name="key" id="key">
+			<input type="text" placeholder="shared secret" name="shared" id="shared">
+			<input type="button" value="submit" id="submit_admin">
+		  </form>
+		</div>
 
-      </div>
+		<div id="signed_in">
+		  <p>This is a front end for the REST API</p>
+		  <p>You can interface with YUDU providing you have entered correct data. This is useful to replicate issues etc.</p>
+		  <p>To begin, select a method from the left.</p>
 
-      <div class="two-thirds column create" style="margin-top: 5%">
-        <h5>CREATE</h5>
-        <div class="create_options">
-          <p>Create a brand new one of the following...</p>
-          <a href="#" class="create_link_reader"><h6>Reader</h6></a>
-          <a href="#" class="create_link_subscriptions"><h6>Subscription Period</h6></a>
-          <a href="#" class="create_link_permissions"><h6>Permission</h6></a>
-        </div>
-        <div class="create_panel_reader panel">
-          <form name="create_reader_form">
-            <h6>Create a new Reader</h6>
-            <input type="text" placeholder="username" name="create_username">
-            <input type="text" placeholder="password" name="create_password">
-            <input type="text" placeholder="email" name="create_email">
-            <input type="text" placeholder="first name" name="create_firstname">
-            <input type="text" placeholder="last name" name="create_lastname">
-            <input type="text" placeholder="number of devices" name="create_devices">
-            <input type="text" placeholder="node id" name="create_nodeid">
-            <input type="button" value="submit" id="submit_create_reader">
-          </form>
-          <div class="response"></div>
-          <a href="#" class="back_button">Back</a>
-        </div>
-        <div class="create_panel_subscriptions panel">
-          <form name="create_reader_form">
-            <h6>Create a new subscription period</h6>
-            <input type="text" placeholder="reader id" name="subscription_reader_id">
-            <input type="text" placeholder="subscription id" name="subscription_sub_id">
-            <input type="text" placeholder="start date" name="subscription_start_date">
-            <input type="text" placeholder="end date" name="subscription_end_date">
-            <input type="button" value="submit" id="submit_create_subscription">
-          </form>
-          <a href="#" class="back_button">Back</a>
-        </div>
-        <div class="create_panel_permissions panel">
-          <form name="create_permissions_form">
-            <h6>Create a new permission</h6>
-            <input type="text" placeholder="reader id" name="subscription_reader_id">
-            <input type="text" placeholder="edition id" name="subscription_sub_id">
-            <input type="button" value="submit" id="submit_create_subscription">
-          </form>
-          <a href="#" class="back_button">Back</a>
-        </div>
-      </div>
+		</div>
 
-      <div class="two-thirds column read" style="margin-top: 5%">
-        <h5>READ</h5>
-        <div class="create_options">
-          <div class="option">
-            <h5>Readers</h5>
-            <a href="#" class="read_link_all_readers"><h6>ALL Readers</h6></a>
-            <a href="#" class="read_link_one_reader"><h6>ONE Reader</h6></a>
-            <a href="#" class="read_link_all_reader_logins"><h6>ALL Reader log ins</h6></a>
-            <a href="#" class="read_link_one_reader_login"><h6>ONE Reader log in</h6></a>
-          </div>
-          <div class="option">
-            <h5>Editions</h5>
-            <a href="#" class="read_link_all_editions"><h6>ALL Editions</h6></a>
-            <a href="#" class="read_link_one_edition"><h6>ONE Edition</h6></a>
-          </div>
-          <div class="option">
-            <h5>Permissions</h5>
-            <a href="#" class="read_link_all_permissions"><h6>ALL Permissions</h6></a>
-            <a href="#" class="read_link_one_permission"><h6>ONE Permission</h6></a>
-          </div>
-          <div class="option">
-            <h5>Subscriptions</h5>
-            <a href="#" class="read_link_all_subscriptions"><h6>ALL Subscriptions</h6></a>
-            <a href="#" class="read_link_one_subscription"><h6>ONE Subscription</h6></a>
-            <a href="#" class="read_link_all_subscription_periods"><h6>ALL Subscription Periods</h6></a>
-            <a href="#" class="read_link_one_subscription_period"><h6>ONE Subscription Period</h6></a>
-          </div>
-          <div class="option">
-            <h5>Publications</h5>
-            <a href="#" class="read_link_all_publications"><h6>ALL Publications</h6></a>
-            <a href="#" class="read_link_one_publication"><h6>ONE Publication</h6></a>
-          </div>
-        </div>
+	  </div>
 
-        <div class="read_panel_all_readers panel">
-          <h6>Get info on an existing reader</h6>
-          <a href="#" class="back_button">Back</a>
-        </div>
-        <div class="read_panel_one_reader panel">
-          <h6>Get info on an one reader</h6>
-          <a href="#" class="back_button">Back</a>
-        </div>
-        <div class="read_panel_all_reader_logins panel">
-            <h6>Get info on all reader log ins</h6>
-          <a href="#" class="back_button">Back</a>
-        </div>
-        <div class="read_panel_one_reader_login panel">
-            <h6>Get info on one reader log in</h6>
-          <a href="#" class="back_button">Back</a>
-        </div>
-        <div class="read_panel_all_editions panel">
-            <h6>Get info on all editions</h6>
-          <a href="#" class="back_button">Back</a>
-        </div>
-        <div class="read_panel_one_edition panel">
-            <h6>Get info on one edition</h6>
-          <a href="#" class="back_button">Back</a>
-        </div>
-        <div class="read_panel_all_permissions panel">
-            <h6>Get info on all permissions</h6>
-          <a href="#" class="back_button">Back</a>
-        </div>
-        <div class="read_panel_one_permission panel">
-            <h6>Get info on one permission</h6>
-          <a href="#" class="back_button">Back</a>
-        </div>
-        <div class="read_panel_all_subscriptions panel">
-            <h6>Get info on all subscription groups</h6>
-          <a href="#" class="back_button">Back</a>
-        </div>
-        <div class="read_panel_one_subscription panel">
-            <h6>Get info on one subscription group</h6>
-          <a href="#" class="back_button">Back</a>
-        </div>
-        <div class="read_panel_all_subscription_periods panel">
-            <h6>Get info on all subscription periods</h6>
-          <a href="#" class="back_button">Back</a>
-        </div>
-        <div class="read_panel_one_subscription_period panel">
-            <h6>Get info on one subscription period</h6>
-          <a href="#" class="back_button">Back</a>
-        </div>
-        <div class="read_panel_all_publications panel">
-            <h6>Get info on all publication nodes</h6>
-          <a href="#" class="back_button">Back</a>
-        </div>
-        <div class="read_panel_one_publication panel">
-            <h6>Get info on one publication node</h6>
-            <a href="#" class="back_button">Back</a>
-        </div>
-      </div>
+	  <div class="two-thirds column create" style="margin-top: 5%">
+		<h5>CREATE</h5>
+		<div class="create_options">
+		  <p>Create a brand new one of the following...</p>
+		  <a href="#" class="create_link_reader"><h6>Reader</h6></a>
+		  <a href="#" class="create_link_subscriptions"><h6>Subscription Period</h6></a>
+		  <a href="#" class="create_link_permissions"><h6>Permission</h6></a>
+		</div>
+		<div class="create_panel_reader panel">
+		  <form name="create_reader_form">
+			<h6>Create a new Reader</h6>
+			<input type="text" placeholder="username" name="create_username">
+			<input type="text" placeholder="password" name="create_password">
+			<input type="text" placeholder="email" name="create_email">
+			<input type="text" placeholder="first name" name="create_firstname">
+			<input type="text" placeholder="last name" name="create_lastname">
+			<input type="text" placeholder="number of devices" name="create_devices">
+			<input type="text" placeholder="node id" name="create_nodeid">
+			<input type="button" value="submit" id="submit_create_reader">
+		  </form>
+		  <div class="response"></div>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+		<div class="create_panel_subscriptions panel">
+		  <form name="create_reader_form">
+			<h6>Create a new subscription period</h6>
+			<input type="text" placeholder="reader id" name="subscription_reader_id">
+			<input type="text" placeholder="subscription id" name="subscription_sub_id">
+			<input type="text" placeholder="start date" name="subscription_start_date">
+			<input type="text" placeholder="end date" name="subscription_end_date">
+			<input type="button" value="submit" id="submit_create_subscription">
+		  </form>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+		<div class="create_panel_permissions panel">
+		  <form name="create_permissions_form">
+			<h6>Create a new permission</h6>
+			<input type="text" placeholder="reader id" name="subscription_reader_id">
+			<input type="text" placeholder="edition id" name="subscription_sub_id">
+			<input type="button" value="submit" id="submit_create_subscription">
+		  </form>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+	  </div>
 
-      <div class="two-thirds column update" style="margin-top: 5%">
-        <h5>UPDATE</h5>
-        <div class="create_options">
-          <p>Retreive and modify an existing...</p>
-          <a href="#" class="update_link_reader"><h6>Reader</h6></a>
-          <a href="#" class="update_link_subscription_period"><h6>Subscription Period</h6></a>
-          <a href="#" class="update_link_permission"><h6>Permission</h6></a>
-        </div>
-        <div class="update_panel_reader panel">
-          <form name="update_reader_form">
-            <h6>Update a reader</h6>
-            <h6>Leave fields blank that you do not want to update</h6>
-            <input type="text" placeholder="reader id" name="update_reader_id">
-            <input type="text" placeholder="username" name="update_reader_username">
-            <input type="text" placeholder="password" name="update_reader_password">
-            <input type="text" placeholder="first name" name="update_reader_firstname">
-            <input type="text" placeholder="last name" name="update_reader_lastname">
-            <input type="text" placeholder="number of devices" name="update_reader_devices">
-            <input type="button" value="submit" id="submit_updatereader">
-          </form>
-          <a href="#" class="back_button">Back</a>
-        </div>
-        <div class="update_panel_subscription_period panel">
-          <form name="update_subscription_period_form">
-            <h6>Update a subscription period</h6>
-            <input type="text" placeholder="subscription period id" name="update_subscription_period_id">
-            <input type="text" placeholder="start date" name="update_subscription_period_start_date">
-            <input type="text" placeholder="end date" name="update_subscription_period_end_date">
-            <input type="button" value="submit" id="submit_update_subscription_period">
-          </form>
-          <a href="#" class="back_button">Back</a>
-        </div>
-        <div class="update_panel_permission panel">
-          <form name="update_permission_form">
-            <h6>Update a permission</h6>
-            <input type="text" placeholder="permission id" name="update_permission_id">
-            <input type="text" placeholder="expiry date" name="update_permission_expiry_date">
-            <input type="button" value="submit" id="submit_update_permission">
-          </form>
-          <a href="#" class="back_button">Back</a>
-        </div>
-      </div>
+	  <div class="two-thirds column read" style="margin-top: 5%">
+		<h5>READ</h5>
+		<div class="create_options">
+		  <div class="option">
+			<h5>Readers</h5>
+			<a href="#" class="read_link_all_readers"><h6>ALL Readers</h6></a>
+			<a href="#" class="read_link_one_reader"><h6>ONE Reader</h6></a>
+			<a href="#" class="read_link_all_reader_logins"><h6>ALL Reader log ins</h6></a>
+			<a href="#" class="read_link_one_reader_login"><h6>ONE Reader log in</h6></a>
+		  </div>
+		  <div class="option">
+			<h5>Editions</h5>
+			<a href="#" class="read_link_all_editions"><h6>ALL Editions</h6></a>
+			<a href="#" class="read_link_one_edition"><h6>ONE Edition</h6></a>
+		  </div>
+		  <div class="option">
+			<h5>Permissions</h5>
+			<a href="#" class="read_link_all_permissions"><h6>ALL Permissions</h6></a>
+			<a href="#" class="read_link_one_permission"><h6>ONE Permission</h6></a>
+		  </div>
+		  <div class="option">
+			<h5>Subscriptions</h5>
+			<a href="#" class="read_link_all_subscriptions"><h6>ALL Subscriptions</h6></a>
+			<a href="#" class="read_link_one_subscription"><h6>ONE Subscription</h6></a>
+			<a href="#" class="read_link_all_subscription_periods"><h6>ALL Subscription Periods</h6></a>
+			<a href="#" class="read_link_one_subscription_period"><h6>ONE Subscription Period</h6></a>
+		  </div>
+		  <div class="option">
+			<h5>Publications</h5>
+			<a href="#" class="read_link_all_publications"><h6>ALL Publications</h6></a>
+			<a href="#" class="read_link_one_publication"><h6>ONE Publication</h6></a>
+		  </div>
+		</div>
 
-      <div class="two-thirds column delete" style="margin-top: 5%">
-        <h5>DELETE</h5>
-        <div class="create_options">
-          <p>Delete an existing...</p>
-          <a href="#" class="delete_link_reader"><h6>Reader</h6></a>
-          <a href="#" class="delete_link_subscription_period"><h6>Subscription Period</h6></a>
-          <a href="#" class="delete_link_permission"><h6>Permission</h6></a>
-          <a href="#" class="delete_link_authorised_device_limit"><h6>Authorised Device Limit</h6></a>
-        </div>
-        <div class="delete_panel_reader panel">
-          <form name="delete_reader_form">
-            <h6>Delete a reader</h6>
-            <input type="text" placeholder="reader id" name="delete_id">
-            <input type="button" value="submit" id="submit_delete_reader">
-          </form>
-          <a href="#" class="back_button">Back</a>
-        </div>
-        <div class="delete_panel_subscription_period panel">
-          <form name="delete_subscription_period_form">
-            <h6>Delete a subscription period</h6>
-            <input type="text" placeholder="subscription period id" name="delete_subscription_period_id">
-            <input type="button" value="submit" id="submit_delete_subscription_period">
-          </form>
-          <a href="#" class="back_button">Back</a>
-        </div>
-        <div class="delete_panel_permission panel">
-          <form name="delete_permission_form">
-            <h6>Delete a permission</h6>
-            <input type="text" placeholder="permission id" name="delete_permission_id">
-            <input type="button" value="submit" id="submit_delete_permission">
-          </form>
-          <a href="#" class="back_button">Back</a>
-        </div>
-        <div class="delete_panel_authorised_device_limit panel">
-          <form name="delete_authorised_device_limit_form">
-            <h6>Reset an authorised device limit</h6>
-            <input type="text" placeholder="reader id" name="delete_authorised_device_limit">
-            <input type="button" value="submit" id="submit_delete_reader">
-          </form>
-          <a href="#" class="back_button">Back</a>
-        </div>
-      </div>
+		<div class="read_panel_all_readers panel">
+		  <h6>Get info on an existing reader</h6>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+		<div class="read_panel_one_reader panel">
+		  <h6>Get info on an one reader</h6>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+		<div class="read_panel_all_reader_logins panel">
+			<h6>Get info on all reader log ins</h6>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+		<div class="read_panel_one_reader_login panel">
+			<h6>Get info on one reader log in</h6>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+		<div class="read_panel_all_editions panel">
+			<h6>Get info on all editions</h6>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+		<div class="read_panel_one_edition panel">
+			<h6>Get info on one edition</h6>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+		<div class="read_panel_all_permissions panel">
+			<h6>Get info on all permissions</h6>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+		<div class="read_panel_one_permission panel">
+			<h6>Get info on one permission</h6>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+		<div class="read_panel_all_subscriptions panel">
+			<h6>Get info on all subscription groups</h6>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+		<div class="read_panel_one_subscription panel">
+			<h6>Get info on one subscription group</h6>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+		<div class="read_panel_all_subscription_periods panel">
+			<h6>Get info on all subscription periods</h6>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+		<div class="read_panel_one_subscription_period panel">
+			<h6>Get info on one subscription period</h6>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+		<div class="read_panel_all_publications panel">
+			<h6>Get info on all publication nodes</h6>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+		<div class="read_panel_one_publication panel">
+			<h6>Get info on one publication node</h6>
+			<a href="#" class="back_button">Back</a>
+		</div>
+	  </div>
 
-      <div class="prompts"></div>
+	  <div class="two-thirds column update" style="margin-top: 5%">
+		<h5>UPDATE</h5>
+		<div class="create_options">
+		  <p>Retreive and modify an existing...</p>
+		  <a href="#" class="update_link_reader"><h6>Reader</h6></a>
+		  <a href="#" class="update_link_subscription_period"><h6>Subscription Period</h6></a>
+		  <a href="#" class="update_link_permission"><h6>Permission</h6></a>
+		</div>
+		<div class="update_panel_reader panel">
+		  <form name="update_reader_form">
+			<h6>Update a reader</h6>
+			<h6>Leave fields blank that you do not want to update</h6>
+			<input type="text" placeholder="reader id" name="update_reader_id">
+			<input type="text" placeholder="username" name="update_reader_username">
+			<input type="text" placeholder="password" name="update_reader_password">
+			<input type="text" placeholder="first name" name="update_reader_firstname">
+			<input type="text" placeholder="last name" name="update_reader_lastname">
+			<input type="text" placeholder="number of devices" name="update_reader_devices">
+			<input type="button" value="submit" id="submit_updatereader">
+		  </form>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+		<div class="update_panel_subscription_period panel">
+		  <form name="update_subscription_period_form">
+			<h6>Update a subscription period</h6>
+			<input type="text" placeholder="subscription period id" name="update_subscription_period_id">
+			<input type="text" placeholder="start date" name="update_subscription_period_start_date">
+			<input type="text" placeholder="end date" name="update_subscription_period_end_date">
+			<input type="button" value="submit" id="submit_update_subscription_period">
+		  </form>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+		<div class="update_panel_permission panel">
+		  <form name="update_permission_form">
+			<h6>Update a permission</h6>
+			<input type="text" placeholder="permission id" name="update_permission_id">
+			<input type="text" placeholder="expiry date" name="update_permission_expiry_date">
+			<input type="button" value="submit" id="submit_update_permission">
+		  </form>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+	  </div>
 
-    </div>
+	  <div class="two-thirds column delete" style="margin-top: 5%">
+		<h5>DELETE</h5>
+		<div class="create_options">
+		  <p>Delete an existing...</p>
+		  <a href="#" class="delete_link_reader"><h6>Reader</h6></a>
+		  <a href="#" class="delete_link_subscription_period"><h6>Subscription Period</h6></a>
+		  <a href="#" class="delete_link_permission"><h6>Permission</h6></a>
+		  <a href="#" class="delete_link_authorised_device_limit"><h6>Authorised Device Limit</h6></a>
+		</div>
+		<div class="delete_panel_reader panel">
+		  <form name="delete_reader_form">
+			<h6>Delete a reader</h6>
+			<input type="text" placeholder="reader id" name="delete_id">
+			<input type="button" value="submit" id="submit_delete_reader">
+		  </form>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+		<div class="delete_panel_subscription_period panel">
+		  <form name="delete_subscription_period_form">
+			<h6>Delete a subscription period</h6>
+			<input type="text" placeholder="subscription period id" name="delete_subscription_period_id">
+			<input type="button" value="submit" id="submit_delete_subscription_period">
+		  </form>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+		<div class="delete_panel_permission panel">
+		  <form name="delete_permission_form">
+			<h6>Delete a permission</h6>
+			<input type="text" placeholder="permission id" name="delete_permission_id">
+			<input type="button" value="submit" id="submit_delete_permission">
+		  </form>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+		<div class="delete_panel_authorised_device_limit panel">
+		  <form name="delete_authorised_device_limit_form">
+			<h6>Reset an authorised device limit</h6>
+			<input type="text" placeholder="reader id" name="delete_authorised_device_limit">
+			<input type="button" value="submit" id="submit_delete_reader">
+		  </form>
+		  <a href="#" class="back_button">Back</a>
+		</div>
+	  </div>
+
+	  <div class="prompts"></div>
+
+	</div>
+
+	
   </div>
-
+  <div class="toolbar" style="display:none">
+	<span id="name_output">Name: </span>
+	<span id="api_output">API Key: </span>
+	<span id="shared_output">Shared Secret: </span>
+  </div>
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <script src="js/jquery.js" type="text/javascript"></script>
